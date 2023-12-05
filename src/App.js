@@ -5,28 +5,29 @@ function App() {
   const date = new Date();
   const [year] = useState(date.getFullYear());
 
-  const initalLogin = {
+  const initialLogin = {
     first: null,
     second: null,
     third: null,
     fourth: null,
   };
 
-  const [login, setLogin] = useState(initalLogin);
-  let loginNums = initalLogin;
+  const [login, setLogin] = useState(initialLogin);
 
   const numberClick = (event) => {
     event.preventDefault();
-    for (const [key, value] of Object.entries(loginNums)) {
+    for (const [key, value] of Object.entries(login)){
       if(!value){
-        console.log(key);
+        setLogin({...login, [key]: event.target.value})
+        return login
       }
     }
+    console.log(login)
   };
 
   const loginClear = (event) => {
     event.preventDefault();
-    loginNums = initalLogin;
+    setLogin(initialLogin);
   };
 
   useEffect(() => {

@@ -1,6 +1,8 @@
 import './App.css';
 import { useState, } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import LoginForm from './components/LoginForm';
+import AddItemForm from './components/AddItem';
 
 function App() {
   const date = new Date();
@@ -12,7 +14,10 @@ function App() {
         <h1 style={{width:'100%', textAlign:'center'}}>Sushi</h1>
       </header>
       <main style={{textAlign:'center'}}>
-        <LoginForm />  
+        <Routes>
+          <Route path='/' element={<LoginForm/>}/>
+          <Route path='/addItem' element={<AddItemForm/>}/> 
+        </Routes>
       </main>
       <footer>
         <p>&copy; Sushi {year}</p>

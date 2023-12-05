@@ -9,10 +9,9 @@ const initialLogin = {
 };
 
 const LoginForm = (() => {
+    const [login, setLogin] = useState(initialLogin);
     
-      const [login, setLogin] = useState(initialLogin);
-    
-      const numberClick = (event) => {
+    const numberClick = (event) => {
         event.preventDefault();
         for (const [key, value] of Object.entries(login)){
           if(!value){

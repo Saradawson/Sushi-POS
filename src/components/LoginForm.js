@@ -10,12 +10,17 @@ const initialLogin = {
 
 const LoginForm = (() => {
     const [login, setLogin] = useState(initialLogin);
+
+    const [isBtnDisabled, setBtnDisabled] = useState(true)
     
     const numberClick = (event) => {
         event.preventDefault();
         for (const [key, value] of Object.entries(login)){
           if(!value){
             setLogin({...login, [key]: event.target.value})
+            if(key === 'fourth'){
+              setBtnDisabled(false);
+            }
             return login
           }
         }
@@ -26,10 +31,15 @@ const LoginForm = (() => {
         setLogin(initialLogin);
       };
 
+      const onSubmit = (event) => {
+        event.preventDefault()
+        console.log('logged in')
+      };
+
     return (
         <div id="login-form">
             <h2 style={{border:'solid', marginBottom:'0'}}>{login.first}{login.second}{login.third}{login.fourth}</h2>
-            <form>
+            <form onSubmit={onSubmit}>
                 <div className='row'>
                 <button className='keypad-btns' value={1} onClick={numberClick}>1</button>
                 <button className='keypad-btns' value={2} onClick={numberClick}>2</button>
@@ -48,7 +58,7 @@ const LoginForm = (() => {
                 <div className='row'>
                 <button className='keypad-btns' onClick={loginClear}>CLEAR</button>
                 <button className='keypad-btns' value={0} onClick={numberClick}>0</button>
-                <button className='keypad-btns'type='submit'>GO</button>
+                <button className='keypad-btns'type='submit' disabled={isBtnDisabled}>GO</button>
                 </div>
             </form>
         </div>

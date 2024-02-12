@@ -16,7 +16,7 @@ const AddItemForm = () => {
     const key = event.target.name;
     setItem({...item, [key]: value});
   }
-  
+
     return (
         <div className="AddItemForm">
           <form id='addItemForm'>

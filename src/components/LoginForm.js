@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const initialLogin = {
     first: null,
@@ -12,6 +13,7 @@ const LoginForm = (() => {
     const [login, setLogin] = useState(initialLogin);
 
     const [isBtnDisabled, setBtnDisabled] = useState(true)
+    const navigate = useNavigate();
     
     const numberClick = (event) => {
         event.preventDefault();
@@ -32,7 +34,8 @@ const LoginForm = (() => {
       };
 
       const onSubmit = (event) => {
-        event.preventDefault()
+        event.preventDefault();
+        navigate('/main')
         console.log('logged in')
       };
 

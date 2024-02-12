@@ -2,8 +2,8 @@ import './App.css';
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-
 import LoginForm from './components/LoginForm';
+import MainPage from './components/mainPage';
 
 function App() {
   const date = new Date();
@@ -18,6 +18,7 @@ function App() {
       <main style={{textAlign:'center'}}>
         <Routes>
           <Route path='/' element={<LoginForm/>}/>
+          <Route path='/main' element={<MainPage/>}/>
         </Routes>
       </main>
       <footer>
